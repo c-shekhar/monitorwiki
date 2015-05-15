@@ -1,0 +1,39 @@
+{{extend 'layout.html'}}
+
+<h3 style="color:green">Title:<h2 style="color:blue">{{=detail.page_title}}</h2></h3><br>
+<style>
+.mid{
+font-size:20px;
+color:black;
+float:left
+margin-left:80px;
+}
+.body{
+background: #00ff00 url("smiley.gif") no-repeat fixed center
+}
+.img-wiki{
+float:right;
+margin-top:-50px;
+}
+}
+</style>
+<div class="img-wiki">
+<img src="http://melissaagnes.com/wp-content/uploads/2015/01/wikipedia-logo.png" alt="Smiley face" >
+</div>
+
+<div class="mid">
+<i><b>Page Id </b>			:{{=detail.id}}</i><br/>
+<i><b>Is Anonymous?</b>		:{{=detail.is_anon}} </i><br/>
+<i><b>Unpatrolled</b>		:{{=detail.is_unpatrolled}}</i><br/>
+<i><b>Parent Id is</b>		:{{=detail.parent_rev_id}}</i><br/>
+<i><b>Is Bot?</b>			:{{=detail.is_bot}}</i><br/>
+<i><b>Is New?</b>			:{{=detail.is_new}}</i><br/>
+<i><b>Is Minor?</b>			:{{=detail.is_minor}}</i><br/>
+<i><b>Summary</b>			:{{=detail.summary}}</i><br/>
+<i><b>User Info</b>			:{{=detail.user_name}}</i><br/>
+<i><b>NameSpace</b>			:{{=detail.ns}}</i><br/>
+<i><b>Bytes Change</b>		:{{=detail.change_size}}</i><br/>
+<i><b>Flags</b>				:{{=detail.flags}}</i><br/>
+<i><b>Edited On</b>			:{{=detail.updated}}</i><br/>
+</div>
+<center><a href="{{=detail.url}}"><h3>click me to view on wikipedia</h3></a></center>

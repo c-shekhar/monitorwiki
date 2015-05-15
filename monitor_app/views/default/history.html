@@ -1,0 +1,41 @@
+{{extend 'layout.html'}}
+<style>
+#new-arrivals{
+border:0;
+color:;
+}
+</style>
+<!--{{=rows}} -->
+<center><h2>Last five hour edits</h2></center>
+<div id="new-arrivals1">
+<table class='table' >
+    
+    <tr>
+    
+    <th>
+        Post id
+    </th>
+    <th>
+        Title
+    </th>
+        <th>
+        Editted On
+    </th>
+    <th>
+        NameSpace
+    </th>
+        
+    </tr>
+    </h2>
+    {{for row in rows:}}
+    <tr>
+        <td>{{=row.id}}</td>
+        <td><a href="{{=URL('detail_view',args=row.id)}}">{{=row.page_title}}</a></td>
+        <td>{{=row.updated}}</td>
+
+        <td>{{=row.ns}}</td>
+        
+    </tr>
+    {{pass}}
+</table>
+</div>

@@ -1,0 +1,490 @@
+timestamp: 2015-05-08T14:25:17.138377
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(512),
+    password CHAR(512),
+    registration_key CHAR(512),
+    reset_password_key CHAR(512),
+    registration_id CHAR(512)
+);
+success!
+timestamp: 2015-05-08T14:25:17.376374
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2015-05-08T14:25:17.488725
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE
+);
+success!
+timestamp: 2015-05-08T14:25:17.768718
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2015-05-08T14:25:17.925615
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2015-05-08T14:25:18.138982
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    created_on TIMESTAMP,
+    service CHAR(512),
+    ticket CHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2015-05-08T14:28:20.355379
+CREATE TABLE auth_user(
+    id INT AUTO_INCREMENT NOT NULL,
+    first_name VARCHAR(128),
+    last_name VARCHAR(128),
+    email VARCHAR(512),
+    password VARCHAR(512),
+    registration_key VARCHAR(512),
+    reset_password_key VARCHAR(512),
+    registration_id VARCHAR(512),
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2015-05-08T14:28:38.306863
+CREATE TABLE auth_user(
+    id INT AUTO_INCREMENT NOT NULL,
+    first_name VARCHAR(128),
+    last_name VARCHAR(128),
+    email VARCHAR(512),
+    password VARCHAR(512),
+    registration_key VARCHAR(512),
+    reset_password_key VARCHAR(512),
+    registration_id VARCHAR(512),
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2015-05-08T14:29:34.140003
+CREATE TABLE auth_user(
+    id INT AUTO_INCREMENT NOT NULL,
+    first_name VARCHAR(128),
+    last_name VARCHAR(128),
+    email VARCHAR(512),
+    password VARCHAR(512),
+    registration_key VARCHAR(512),
+    reset_password_key VARCHAR(512),
+    registration_id VARCHAR(512),
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2015-05-08T14:29:45.754227
+CREATE TABLE auth_user(
+    id INT AUTO_INCREMENT NOT NULL,
+    first_name VARCHAR(128),
+    last_name VARCHAR(128),
+    email VARCHAR(512),
+    password VARCHAR(512),
+    registration_key VARCHAR(512),
+    reset_password_key VARCHAR(512),
+    registration_id VARCHAR(512),
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-05-08T14:29:45.949449
+CREATE TABLE auth_group(
+    id INT AUTO_INCREMENT NOT NULL,
+    role VARCHAR(512),
+    description LONGTEXT,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-05-08T14:29:46.073047
+CREATE TABLE auth_membership(
+    id INT AUTO_INCREMENT NOT NULL,
+    user_id INT, INDEX user_id__idx (user_id), FOREIGN KEY (user_id) REFERENCES auth_user (id) ON DELETE CASCADE,
+    group_id INT, INDEX group_id__idx (group_id), FOREIGN KEY (group_id) REFERENCES auth_group (id) ON DELETE CASCADE,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-05-08T14:29:46.229357
+CREATE TABLE auth_permission(
+    id INT AUTO_INCREMENT NOT NULL,
+    group_id INT, INDEX group_id__idx (group_id), FOREIGN KEY (group_id) REFERENCES auth_group (id) ON DELETE CASCADE,
+    name VARCHAR(512),
+    table_name VARCHAR(512),
+    record_id INT,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-05-08T14:29:46.368152
+CREATE TABLE auth_event(
+    id INT AUTO_INCREMENT NOT NULL,
+    time_stamp DATETIME,
+    client_ip VARCHAR(512),
+    user_id INT, INDEX user_id__idx (user_id), FOREIGN KEY (user_id) REFERENCES auth_user (id) ON DELETE CASCADE,
+    origin VARCHAR(512),
+    description LONGTEXT,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-05-08T14:29:46.500843
+CREATE TABLE auth_cas(
+    id INT AUTO_INCREMENT NOT NULL,
+    user_id INT, INDEX user_id__idx (user_id), FOREIGN KEY (user_id) REFERENCES auth_user (id) ON DELETE CASCADE,
+    created_on DATETIME,
+    service VARCHAR(512),
+    ticket VARCHAR(512),
+    renew CHAR(1),
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-05-08T14:29:46.697489
+CREATE TABLE edits(
+    id INT AUTO_INCREMENT NOT NULL,
+    page_title VARCHAR(512),
+    is_anon VARCHAR(512),
+    url VARCHAR(512),
+    is_unpatrolled VARCHAR(512),
+    parent_rev_id VARCHAR(512),
+    is_bot VARCHAR(512),
+    is_new VARCHAR(512),
+    is_minor VARCHAR(512),
+    summary VARCHAR(512),
+    flags VARCHAR(512),
+    user_name VARCHAR(512),
+    actions VARCHAR(512),
+    ns VARCHAR(512),
+    change_size VARCHAR(512),
+    rev_id VARCHAR(512),
+    epm DOUBLE,
+    teds DOUBLE,
+    updated DATETIME,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-05-09T17:28:43.810260
+ALTER TABLE edits ADD lang VARCHAR(512);
+success!
+success!
+timestamp: 2015-05-11T01:00:27.912523
+CREATE TABLE news(
+    id INT AUTO_INCREMENT NOT NULL,
+    page_title VARCHAR(512),
+    en-title VARCHAR(512),
+    lang VARCHAR(512),
+    url VARCHAR(512),
+    weight VARCHAR(512),
+    edit-dist VARCHAR(512),
+    partial-dist VARCHAR(512),
+    ratio VARCHAR(512),
+    updated DATETIME,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2015-05-11T01:00:38.319873
+CREATE TABLE news(
+    id INT AUTO_INCREMENT NOT NULL,
+    page_title VARCHAR(512),
+    en-title VARCHAR(512),
+    lang VARCHAR(512),
+    url VARCHAR(512),
+    weight VARCHAR(512),
+    edit-dist VARCHAR(512),
+    partial-dist VARCHAR(512),
+    ratio VARCHAR(512),
+    updated DATETIME,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2015-05-11T01:01:23.333972
+CREATE TABLE news(
+    id INT AUTO_INCREMENT NOT NULL,
+    page_title VARCHAR(512),
+    en-title VARCHAR(512),
+    lang VARCHAR(512),
+    url VARCHAR(512),
+    weight VARCHAR(512),
+    edit-dist VARCHAR(512),
+    partial-dist VARCHAR(512),
+    ratio VARCHAR(512),
+    updated DATETIME,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2015-05-11T01:01:38.162301
+CREATE TABLE news(
+    id INT AUTO_INCREMENT NOT NULL,
+    page_title VARCHAR(512),
+    en-title VARCHAR(512),
+    lang VARCHAR(512),
+    url VARCHAR(512),
+    weight VARCHAR(512),
+    edit-dist VARCHAR(512),
+    partial-dist VARCHAR(512),
+    ratio VARCHAR(512),
+    updated DATETIME,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2015-05-11T01:02:38.351798
+CREATE TABLE news(
+    id INT AUTO_INCREMENT NOT NULL,
+    page_title VARCHAR(512),
+    en-title VARCHAR(512),
+    lang VARCHAR(512),
+    url VARCHAR(512),
+    weight VARCHAR(512),
+    edit-dist VARCHAR(512),
+    partial-dist VARCHAR(512),
+    ratio VARCHAR(512),
+    updated DATETIME,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2015-05-11T01:03:01.059496
+CREATE TABLE news(
+    id INT AUTO_INCREMENT NOT NULL,
+    page_title VARCHAR(512),
+    en_title VARCHAR(512),
+    lang VARCHAR(512),
+    url VARCHAR(512),
+    weight VARCHAR(512),
+    edit_dist VARCHAR(512),
+    partial-dist VARCHAR(512),
+    ratio VARCHAR(512),
+    updated DATETIME,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2015-05-11T01:03:38.413037
+CREATE TABLE news(
+    id INT AUTO_INCREMENT NOT NULL,
+    page_title VARCHAR(512),
+    en_title VARCHAR(512),
+    lang VARCHAR(512),
+    url VARCHAR(512),
+    weight VARCHAR(512),
+    edit_dist VARCHAR(512),
+    partial-dist VARCHAR(512),
+    ratio VARCHAR(512),
+    updated DATETIME,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2015-05-11T01:03:56.774913
+CREATE TABLE news(
+    id INT AUTO_INCREMENT NOT NULL,
+    page_title VARCHAR(512),
+    en_title VARCHAR(512),
+    lang VARCHAR(512),
+    url VARCHAR(512),
+    weight VARCHAR(512),
+    edit_dist VARCHAR(512),
+    partial-dist VARCHAR(512),
+    ratio VARCHAR(512),
+    updated DATETIME,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2015-05-11T01:05:04.450898
+CREATE TABLE news(
+    id INT AUTO_INCREMENT NOT NULL,
+    page_title VARCHAR(512),
+    en_title VARCHAR(512),
+    lang VARCHAR(512),
+    url VARCHAR(512),
+    weight VARCHAR(512),
+    edit_dist VARCHAR(512),
+    partial_dist VARCHAR(512),
+    ratio VARCHAR(512),
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-05-15T20:45:55.129406
+CREATE TABLE auth_user(
+    id INT AUTO_INCREMENT NOT NULL,
+    first_name VARCHAR(128),
+    last_name VARCHAR(128),
+    email VARCHAR(512),
+    password VARCHAR(512),
+    registration_key VARCHAR(512),
+    reset_password_key VARCHAR(512),
+    registration_id VARCHAR(512),
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2015-05-15T20:46:36.260681
+CREATE TABLE auth_user(
+    id INT AUTO_INCREMENT NOT NULL,
+    first_name VARCHAR(128),
+    last_name VARCHAR(128),
+    email VARCHAR(512),
+    password VARCHAR(512),
+    registration_key VARCHAR(512),
+    reset_password_key VARCHAR(512),
+    registration_id VARCHAR(512),
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2015-05-15T20:47:14.324919
+CREATE TABLE auth_user(
+    id INT AUTO_INCREMENT NOT NULL,
+    first_name VARCHAR(128),
+    last_name VARCHAR(128),
+    email VARCHAR(512),
+    password VARCHAR(512),
+    registration_key VARCHAR(512),
+    reset_password_key VARCHAR(512),
+    registration_id VARCHAR(512),
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2015-05-15T20:47:28.294308
+CREATE TABLE auth_user(
+    id INT AUTO_INCREMENT NOT NULL,
+    first_name VARCHAR(128),
+    last_name VARCHAR(128),
+    email VARCHAR(512),
+    password VARCHAR(512),
+    registration_key VARCHAR(512),
+    reset_password_key VARCHAR(512),
+    registration_id VARCHAR(512),
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2015-05-15T20:47:36.295072
+CREATE TABLE auth_user(
+    id INT AUTO_INCREMENT NOT NULL,
+    first_name VARCHAR(128),
+    last_name VARCHAR(128),
+    email VARCHAR(512),
+    password VARCHAR(512),
+    registration_key VARCHAR(512),
+    reset_password_key VARCHAR(512),
+    registration_id VARCHAR(512),
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2015-05-15T20:48:36.232588
+CREATE TABLE auth_user(
+    id INT AUTO_INCREMENT NOT NULL,
+    first_name VARCHAR(128),
+    last_name VARCHAR(128),
+    email VARCHAR(512),
+    password VARCHAR(512),
+    registration_key VARCHAR(512),
+    reset_password_key VARCHAR(512),
+    registration_id VARCHAR(512),
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2015-05-15T20:49:36.204436
+CREATE TABLE auth_user(
+    id INT AUTO_INCREMENT NOT NULL,
+    first_name VARCHAR(128),
+    last_name VARCHAR(128),
+    email VARCHAR(512),
+    password VARCHAR(512),
+    registration_key VARCHAR(512),
+    reset_password_key VARCHAR(512),
+    registration_id VARCHAR(512),
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2015-05-15T20:49:42.888096
+CREATE TABLE auth_user(
+    id INT AUTO_INCREMENT NOT NULL,
+    first_name VARCHAR(128),
+    last_name VARCHAR(128),
+    email VARCHAR(512),
+    password VARCHAR(512),
+    registration_key VARCHAR(512),
+    reset_password_key VARCHAR(512),
+    registration_id VARCHAR(512),
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-05-15T20:49:42.982651
+CREATE TABLE auth_group(
+    id INT AUTO_INCREMENT NOT NULL,
+    role VARCHAR(512),
+    description LONGTEXT,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-05-15T20:49:43.063443
+CREATE TABLE auth_membership(
+    id INT AUTO_INCREMENT NOT NULL,
+    user_id INT, INDEX user_id__idx (user_id), FOREIGN KEY (user_id) REFERENCES auth_user (id) ON DELETE CASCADE,
+    group_id INT, INDEX group_id__idx (group_id), FOREIGN KEY (group_id) REFERENCES auth_group (id) ON DELETE CASCADE,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-05-15T20:49:43.167141
+CREATE TABLE auth_permission(
+    id INT AUTO_INCREMENT NOT NULL,
+    group_id INT, INDEX group_id__idx (group_id), FOREIGN KEY (group_id) REFERENCES auth_group (id) ON DELETE CASCADE,
+    name VARCHAR(512),
+    table_name VARCHAR(512),
+    record_id INT,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-05-15T20:49:43.241698
+CREATE TABLE auth_event(
+    id INT AUTO_INCREMENT NOT NULL,
+    time_stamp DATETIME,
+    client_ip VARCHAR(512),
+    user_id INT, INDEX user_id__idx (user_id), FOREIGN KEY (user_id) REFERENCES auth_user (id) ON DELETE CASCADE,
+    origin VARCHAR(512),
+    description LONGTEXT,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-05-15T20:49:43.343636
+CREATE TABLE auth_cas(
+    id INT AUTO_INCREMENT NOT NULL,
+    user_id INT, INDEX user_id__idx (user_id), FOREIGN KEY (user_id) REFERENCES auth_user (id) ON DELETE CASCADE,
+    created_on DATETIME,
+    service VARCHAR(512),
+    ticket VARCHAR(512),
+    renew CHAR(1),
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-05-15T20:49:43.433005
+CREATE TABLE edits(
+    id INT AUTO_INCREMENT NOT NULL,
+    page_title VARCHAR(512),
+    is_anon VARCHAR(512),
+    lang VARCHAR(512),
+    url VARCHAR(512),
+    is_unpatrolled VARCHAR(512),
+    parent_rev_id VARCHAR(512),
+    is_bot VARCHAR(512),
+    is_new VARCHAR(512),
+    is_minor VARCHAR(512),
+    summary VARCHAR(512),
+    flags VARCHAR(512),
+    user_name VARCHAR(512),
+    actions VARCHAR(512),
+    ns VARCHAR(512),
+    change_size VARCHAR(512),
+    rev_id VARCHAR(512),
+    epm DOUBLE,
+    teds DOUBLE,
+    updated DATETIME,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-05-15T20:49:43.510364
+CREATE TABLE news(
+    id INT AUTO_INCREMENT NOT NULL,
+    page_title VARCHAR(512),
+    en_title VARCHAR(512),
+    lang VARCHAR(512),
+    url VARCHAR(512),
+    weight VARCHAR(512),
+    edit_dist VARCHAR(512),
+    partial_dist VARCHAR(512),
+    ratio VARCHAR(512),
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!

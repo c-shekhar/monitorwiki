@@ -1,0 +1,24 @@
+{{extend 'layout.html'}}
+<!--{{=rows}} -->
+<div id="new-arrivals">
+<table class='table' id="new-arrivals">
+    {{for row in rows:}}
+    <tr>
+        <td><a href="{{=URL('show',args=row.id)}}">{{=row.url}}</a></td>
+        <td>{{=row.page_title}}</td>
+        <td>{{=row.user_name}}</td>
+        <td>{{=row.updated}}</td>
+        <td>{{=row.id}}</td>
+    </tr>
+    {{pass}}
+</table>
+</div>
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        window.setTimeout(function() {
+            var url = '{{=URL('show')}}';
+            jQuery('#new-arrivals').load(url);
+        }, 1000);
+    });
+</script>

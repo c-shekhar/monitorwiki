@@ -1,0 +1,15 @@
+{{extend 'layout.html'}}
+<style>
+.trend{
+font-size:20px;
+color:green;
+margin-left:50px;
+padding-bottom: 25px;
+margin-bottom:100px
+}
+</style>
+<h2 style=""><center>Trending Language</center></h2>
+<div class="trend">
+Most Trending Language : 	:{{=trendinglang[0]}}<br/>
+Edits per hour in trending Lang	:{{=counts}}
+</div>

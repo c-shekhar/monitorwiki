@@ -1,0 +1,38 @@
+{{extend 'layout.html'}}
+<style>
+#new-arrivals{
+border:0;
+color:;
+}
+</style>
+<!--{{=rows}} -->
+<center><h2>Potential News Of Last Five Hours</h2></center>
+<div id="new-arrivals1">
+<table class='table' >
+    
+    <tr>
+    
+    
+    <th>
+        Title
+    </th>
+        <th>
+        Editted ratio(%)
+    </th>
+    <th>
+        NameSpace
+    </th>
+        
+    </tr>
+    </h2>
+    {{for row in rows:}}
+    <tr>
+        
+        
+        <td>{{=row.page_title}}</td>
+        <td>{{=row.ratio}}</td>
+        
+    </tr>
+    {{pass}}
+</table>
+</div>
